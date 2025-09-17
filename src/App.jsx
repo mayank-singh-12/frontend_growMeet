@@ -15,19 +15,19 @@ function Home({ search }) {
     "https://backend-grow-meet.vercel.app/events"
   );
 
-  function filterDataBySearch(data) {
-    const searchFilteredData =
-      search == ""
-        ? typeFilteredData
-        : typeFilteredData.filter(
-            (event) =>
-              event.title
-                .toLowerCase()
-                .split(" ")
-                .includes(search.toLowerCase()) ||
-              event.tags.includes(search.toLowerCase())
-          );
-  }
+  // function filterDataBySearch(data) {
+  //   const searchFilteredData =
+  //     search == ""
+  //       ? typeFilteredData
+  //       : typeFilteredData.filter(
+  //           (event) =>
+  //             event.title
+  //               .toLowerCase()
+  //               .split(" ")
+  //               .includes(search.toLowerCase()) ||
+  //             event.tags.includes(search.toLowerCase())
+  //         );
+  // }
 
   function renderData() {
     const typeFilteredData =
