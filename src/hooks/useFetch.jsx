@@ -13,11 +13,12 @@ export default function useFetch(url) {
           throw "Unable to fetch data from api.";
         }
         const data = await response.json();
-        setLoading(false);
         setError(null);
         setData(data);
       } catch (error) {
         setError(error);
+      } finally {
+        setLoading(false);
       }
     }
 
