@@ -36,13 +36,16 @@ function Home({ search }) {
         : data.filter((event) => event.type == eventType);
 
     const q = search.trim().toLowerCase();
+    console.log(q);
     const searchFilteredData =
-      search === ""
+      q == ""
         ? typeFilteredData
         : typeFilteredData.filter((event) => {
-            const title = event.title.toLowerCase().split(" ");
-            const tags = event.tags.map((tag) => tag.toLowerCase());
-            return title.includes(q) || tags.includes(q);
+            const title = event.title.toLowerCase();
+            const tags = event.tags
+              .map((tag) => tag.toLowerCase())
+              .filter((tag) => tag.includes(q));
+            return title.includes(q) || tags.length > 0;
 
             // event.title
             //   .toLowerCase()
@@ -50,6 +53,13 @@ function Home({ search }) {
             //   .includes(search.toLowerCase()) ||
             //   event.tags.includes(search.toLowerCase());
           });
+    // const testFilteredData = typeFilteredData.filter((event) => {
+    //   const tags = event.tags
+    //     .map((tag) => tag.toLowerCase())
+    //     .filter((tag) => tag.includes(q));
+    //   return tags.length > 1;
+    // });
+    // console.log(testFilteredData);
 
     return searchFilteredData.map((event) => (
       <Link
